@@ -22,7 +22,6 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { FloatingPetals } from "@/components/FloatingPetals";
-import { MusicToggle } from "@/components/MusicToggle";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { PasswordGate } from "@/components/PasswordGate";
 import { useSettings } from "@/lib/store";
@@ -148,7 +147,6 @@ function RootComponent() {
             <Outlet />
           </main>
           <Footer />
-          <MusicToggle />
         </PasswordGate>
       </ThemedShell>
     </QueryClientProvider>
