@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Our Wedding Story</string>
+    <string name="title_activity_main">Our Wedding Story</string>
+    <string name="package_name">com.wedding.story</string>
+    <string name="custom_url_scheme">com.wedding.story</string>
+</resources>

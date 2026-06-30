@@ -1,0 +1,26 @@
+{
+  "name": "Our Wedding Story",
+  "short_name": "Wedding",
+  "description": "A cinematic wedding album and story milestones",
+  "id": "com.wedding.story",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#fbf6ee",
+  "theme_color": "#c79a73",
+  "categories": ["lifestyle", "photo"],
+  "icons": [
+    {
+      "src": "/logo.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
