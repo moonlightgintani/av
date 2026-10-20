@@ -2,8 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useSettings } from "@/lib/store";
 import { PageHeader } from "@/components/PageHeader";
-import { Lock, RefreshCw, Save } from "lucide-react";
+import { Lock, RefreshCw, Save, ShieldCheck, Smartphone, Download } from "lucide-react";
 import { extractDriveFolderId } from "@/lib/driveUtils";
+import { sha256 } from "@/lib/crypto";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({
@@ -414,25 +415,84 @@ function Page() {
           />
         </Block>
 
-        <Block title="Privacy">
+        <Block title="Privacy & Passcode Encryption">
           <label className="flex items-center gap-3 text-sm">
             <input
               type="checkbox"
               checked={s.passwordEnabled}
               onChange={(e) => s.set({ passwordEnabled: e.target.checked })}
             />
-            Require password to view the site
+            <span>Enable Passcode Protection Gate</span>
           </label>
+
+          <label className="flex items-center gap-3 text-sm">
+            <input
+              type="checkbox"
+              checked={s.lockEveryAccess ?? true}
+              onChange={(e) => s.set({ lockEveryAccess: e.target.checked })}
+            />
+            <span>Require passcode every time website is accessed / visited</span>
+          </label>
+
+          <label className="flex items-center gap-3 text-sm">
+            <input
+              type="checkbox"
+              checked={s.autoLockEnabled ?? true}
+              onChange={(e) => s.set({ autoLockEnabled: e.target.checked })}
+            />
+            <span>Auto-lock website on inactivity</span>
+          </label>
+
+          {(s.autoLockEnabled ?? true) && (
+            <Input
+              label="Auto-lock timeout (seconds)"
+              type="number"
+              value={String(s.autoLockTimeout ?? 60)}
+              onChange={(v) => s.set({ autoLockTimeout: Math.max(5, parseInt(v) || 60) })}
+            />
+          )}
+
+          <div className="space-y-1">
+            <Input
+              label="Site Passcode (Guests)"
+              value={s.sitePassword}
+              onChange={async (v) => {
+                const hash = await sha256(v);
+                s.set({ sitePassword: v, sitePasswordHash: hash });
+              }}
+            />
+            <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground pt-1">
+              <ShieldCheck size={13} className="text-primary" />
+              <span>
+                SHA-256 Fingerprint:{" "}
+                <code className="text-primary font-mono text-[10px]">
+                  {s.sitePasswordHash?.slice(0, 16)}...
+                </code>
+              </span>
+            </div>
+          </div>
+
           <Input
-            label="Site password"
-            value={s.sitePassword}
-            onChange={(v) => s.set({ sitePassword: v })}
-          />
-          <Input
-            label="Admin password"
+            label="Admin password (Dashboard access)"
             value={s.adminPassword}
             onChange={(v) => s.set({ adminPassword: v })}
           />
+        </Block>
+
+        <Block title="Android App (Pure APK)">
+          <p className="text-muted-foreground text-sm">
+            A standalone native Android application package (.apk) is ready for your guests to download, install, and share.
+          </p>
+          <div className="flex flex-wrap items-center gap-3 pt-2">
+            <a
+              href="/OurWeddingStory.apk"
+              download="OurWeddingStory.apk"
+              className="gradient-luxe inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-semibold tracking-wider text-white uppercase shadow-soft hover:scale-105 active:scale-95 transition-all cursor-pointer"
+            >
+              <Download size={14} />
+              <span>Download OurWeddingStory.apk (11.4 MB)</span>
+            </a>
+          </div>
         </Block>
 
         <Block title="Curation">

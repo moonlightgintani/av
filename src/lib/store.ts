@@ -17,8 +17,12 @@ export type SiteSettings = {
   musicUrl: string;
   apkUrl: string;
   sitePassword: string; // shared password to unlock site
+  sitePasswordHash?: string; // encrypted SHA-256 hash of site passcode
   adminPassword: string; // gate the admin page
   passwordEnabled: boolean;
+  lockEveryAccess: boolean; // require passcode every time website is visited/reopened
+  autoLockEnabled: boolean;
+  autoLockTimeout: number; // in seconds (e.g. 60)
   driveApiKey: string;
   folders: {
     engagementPhotos: string;
@@ -87,9 +91,15 @@ const initial: SiteSettings = {
     import.meta.env.VITE_MUSIC_URL ||
     "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
   apkUrl: import.meta.env.VITE_APK_URL || "/OurWeddingStory.apk",
-  sitePassword: import.meta.env.VITE_SITE_PASSWORD || "love",
+  sitePassword: import.meta.env.VITE_SITE_PASSWORD || "1596",
+  sitePasswordHash:
+    import.meta.env.VITE_SITE_PASSWORD_HASH ||
+    "a19fbf8bf0530ca46179b803a8234f56276f21c0e7dc2f84c682924b95de5801", // sha256 for '1596'
   adminPassword: import.meta.env.VITE_ADMIN_PASSWORD || "admin",
-  passwordEnabled: import.meta.env.VITE_PASSWORD_ENABLED === "true",
+  passwordEnabled: import.meta.env.VITE_PASSWORD_ENABLED !== "false",
+  lockEveryAccess: true,
+  autoLockEnabled: import.meta.env.VITE_AUTO_LOCK_ENABLED !== "false",
+  autoLockTimeout: Number(import.meta.env.VITE_AUTO_LOCK_TIMEOUT) || 60,
   driveApiKey: import.meta.env.VITE_DRIVE_API_KEY || "AIzaSyDPuSLh7jw0d7rnrvBohpTDZWfdUvupwUA",
   folders: {
     engagementPhotos:
@@ -251,6 +261,21 @@ export const useSettings = create<SiteSettings & Actions>()(
           merged.saveTheDate.folderId = import.meta.env.VITE_SAVE_THE_DATE_PHOTOS_FOLDER;
         if (import.meta.env.VITE_SAVE_THE_DATE_VIDEOS_FOLDER)
           merged.saveTheDate.videoFolderId = import.meta.env.VITE_SAVE_THE_DATE_VIDEOS_FOLDER;
+
+        if (merged.autoLockEnabled === undefined) merged.autoLockEnabled = true;
+        if (!merged.autoLockTimeout) merged.autoLockTimeout = 60;
+        // Enforce passcode protection and require passcode on access
+        merged.lockEveryAccess = true;
+        merged.passwordEnabled = true;
+        if (
+          !merged.sitePasswordHash ||
+          merged.sitePasswordHash === "8a44b4db46d9d023447385973c68ea7ba3dc38495bc27b0b2e887d42cf38a0f9"
+        ) {
+          merged.sitePasswordHash = "a19fbf8bf0530ca46179b803a8234f56276f21c0e7dc2f84c682924b95de5801";
+        }
+        if (!merged.sitePassword || merged.sitePassword === "love") {
+          merged.sitePassword = "1596";
+        }
 
         return merged;
       },

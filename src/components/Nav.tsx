@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Lock, Smartphone } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
+import { lockWebsite } from "./PasswordGate";
+import { AppDownloadModal } from "./AppDownloadModal";
 import { useSettings } from "@/lib/store";
 import logoImg from "@/assets/logo.jpeg";
 import {
@@ -30,6 +32,7 @@ const links = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [apkModalOpen, setApkModalOpen] = useState(false);
   const brideName = useSettings((s) => s.brideName);
   const groomName = useSettings((s) => s.groomName);
   const albumPdfUrl = useSettings((s) => s.albumPdfUrl);
@@ -206,7 +209,23 @@ export function Nav() {
             Contact
           </Link>
         </nav>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1.5">
+          <button
+            onClick={() => setApkModalOpen(true)}
+            title="Download & Share App (APK)"
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary/10 px-3 py-1.5 text-xs font-semibold tracking-wider text-primary uppercase transition-all hover:bg-primary hover:text-white cursor-pointer shadow-sm active:scale-95"
+          >
+            <Smartphone size={13} />
+            <span>App</span>
+          </button>
+          <button
+            onClick={() => lockWebsite()}
+            title="Lock website now"
+            aria-label="Lock website now"
+            className="text-foreground/70 hover:text-primary grid h-9 w-9 place-items-center rounded-full transition-colors hover:bg-primary/10 cursor-pointer"
+          >
+            <Lock size={15} />
+          </button>
           <ThemeToggle />
           <button
             aria-label="Menu"
@@ -244,9 +263,28 @@ export function Nav() {
                 PDF Album ↗
               </a>
             )}
+            <button
+              onClick={() => {
+                setOpen(false);
+                setApkModalOpen(true);
+              }}
+              className="flex items-center gap-2 text-sm tracking-[0.15em] uppercase text-primary font-semibold transition-colors text-left pt-2 border-t border-primary/15 cursor-pointer"
+            >
+              <Smartphone size={15} /> Download App (APK)
+            </button>
+            <button
+              onClick={() => {
+                setOpen(false);
+                lockWebsite();
+              }}
+              className="flex items-center gap-2 text-sm tracking-[0.15em] uppercase text-foreground/80 hover:text-primary transition-colors text-left pt-2 border-t border-primary/15 cursor-pointer"
+            >
+              <Lock size={14} /> Lock Website
+            </button>
           </nav>
         </div>
       )}
+      <AppDownloadModal open={apkModalOpen} onClose={() => setApkModalOpen(false)} />
     </header>
   );
 }

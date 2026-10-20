@@ -351,7 +351,7 @@ function Page() {
           </p>
         )}
 
-        {items.length > 0 && <MasonryGallery items={items} />}
+        {items.length > 0 && <MasonryGallery items={items} title={`wedding-gallery-${filter}`} />}
       </section>
     </>
   );

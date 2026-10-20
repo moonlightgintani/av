@@ -90,7 +90,10 @@ export function MediaSection({
       {photos.data && photos.data.length > 0 && (
         <section>
           <SectionTitle>Photographs</SectionTitle>
-          <MasonryGallery items={photos.data} />
+          <MasonryGallery
+            items={photos.data}
+            title={Array.isArray(photoFolder) ? photoFolder.join("-") : photoFolder || "wedding"}
+          />
         </section>
       )}
       {videos.data && videos.data.length > 0 && (

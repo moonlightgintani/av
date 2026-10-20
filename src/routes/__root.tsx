@@ -24,6 +24,7 @@ import { Footer } from "@/components/Footer";
 import { FloatingPetals } from "@/components/FloatingPetals";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { PasswordGate } from "@/components/PasswordGate";
+import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { useSettings } from "@/lib/store";
 
 function NotFoundComponent() {
@@ -143,10 +144,11 @@ function RootComponent() {
         <PasswordGate>
           <Nav />
           <FloatingPetals />
-          <main className="relative z-20">
+          <main className="relative z-20 pb-20 lg:pb-0">
             <Outlet />
           </main>
           <Footer />
+          <MobileBottomNav />
         </PasswordGate>
       </ThemedShell>
     </QueryClientProvider>
