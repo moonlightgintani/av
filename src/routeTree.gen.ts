@@ -9,79 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WeddingRouteImport } from './routes/wedding'
-import { Route as VideosRouteImport } from './routes/videos'
-import { Route as TimelineRouteImport } from './routes/timeline'
-import { Route as SaveTheDateRouteImport } from './routes/save-the-date'
-import { Route as ReceptionRouteImport } from './routes/reception'
-import { Route as MemoriesRouteImport } from './routes/memories'
-import { Route as KalupidithalRouteImport } from './routes/kalupidithal'
-import { Route as GalleryRouteImport } from './routes/gallery'
-import { Route as EngagementRouteImport } from './routes/engagement'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as BabyRouteImport } from './routes/baby'
-import { Route as AdminRouteImport } from './routes/admin'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as BabyRouteImport } from './routes/baby'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as EngagementRouteImport } from './routes/engagement'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as KalupidithalRouteImport } from './routes/kalupidithal'
+import { Route as MemoriesRouteImport } from './routes/memories'
+import { Route as ReceptionRouteImport } from './routes/reception'
+import { Route as SaveTheDateRouteImport } from './routes/save-the-date'
+import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as VideosRouteImport } from './routes/videos'
+import { Route as WeddingRouteImport } from './routes/wedding'
 
-const WeddingRoute = WeddingRouteImport.update({
-  id: '/wedding',
-  path: '/wedding',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VideosRoute = VideosRouteImport.update({
-  id: '/videos',
-  path: '/videos',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TimelineRoute = TimelineRouteImport.update({
-  id: '/timeline',
-  path: '/timeline',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SaveTheDateRoute = SaveTheDateRouteImport.update({
-  id: '/save-the-date',
-  path: '/save-the-date',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ReceptionRoute = ReceptionRouteImport.update({
-  id: '/reception',
-  path: '/reception',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MemoriesRoute = MemoriesRouteImport.update({
-  id: '/memories',
-  path: '/memories',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const KalupidithalRoute = KalupidithalRouteImport.update({
-  id: '/kalupidithal',
-  path: '/kalupidithal',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GalleryRoute = GalleryRouteImport.update({
-  id: '/gallery',
-  path: '/gallery',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EngagementRoute = EngagementRouteImport.update({
-  id: '/engagement',
-  path: '/engagement',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BabyRoute = BabyRouteImport.update({
-  id: '/baby',
-  path: '/baby',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminRoute = AdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -89,9 +34,64 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BabyRoute = BabyRouteImport.update({
+  id: '/baby',
+  path: '/baby',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EngagementRoute = EngagementRouteImport.update({
+  id: '/engagement',
+  path: '/engagement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KalupidithalRoute = KalupidithalRouteImport.update({
+  id: '/kalupidithal',
+  path: '/kalupidithal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemoriesRoute = MemoriesRouteImport.update({
+  id: '/memories',
+  path: '/memories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReceptionRoute = ReceptionRouteImport.update({
+  id: '/reception',
+  path: '/reception',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SaveTheDateRoute = SaveTheDateRouteImport.update({
+  id: '/save-the-date',
+  path: '/save-the-date',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimelineRoute = TimelineRouteImport.update({
+  id: '/timeline',
+  path: '/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VideosRoute = VideosRouteImport.update({
+  id: '/videos',
+  path: '/videos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WeddingRoute = WeddingRouteImport.update({
+  id: '/wedding',
+  path: '/wedding',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -214,88 +214,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/wedding': {
-      id: '/wedding'
-      path: '/wedding'
-      fullPath: '/wedding'
-      preLoaderRoute: typeof WeddingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/videos': {
-      id: '/videos'
-      path: '/videos'
-      fullPath: '/videos'
-      preLoaderRoute: typeof VideosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/timeline': {
-      id: '/timeline'
-      path: '/timeline'
-      fullPath: '/timeline'
-      preLoaderRoute: typeof TimelineRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/save-the-date': {
-      id: '/save-the-date'
-      path: '/save-the-date'
-      fullPath: '/save-the-date'
-      preLoaderRoute: typeof SaveTheDateRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/reception': {
-      id: '/reception'
-      path: '/reception'
-      fullPath: '/reception'
-      preLoaderRoute: typeof ReceptionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/memories': {
-      id: '/memories'
-      path: '/memories'
-      fullPath: '/memories'
-      preLoaderRoute: typeof MemoriesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/kalupidithal': {
-      id: '/kalupidithal'
-      path: '/kalupidithal'
-      fullPath: '/kalupidithal'
-      preLoaderRoute: typeof KalupidithalRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/gallery': {
-      id: '/gallery'
-      path: '/gallery'
-      fullPath: '/gallery'
-      preLoaderRoute: typeof GalleryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/engagement': {
-      id: '/engagement'
-      path: '/engagement'
-      fullPath: '/engagement'
-      preLoaderRoute: typeof EngagementRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/baby': {
-      id: '/baby'
-      path: '/baby'
-      fullPath: '/baby'
-      preLoaderRoute: typeof BabyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -305,11 +228,88 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/baby': {
+      id: '/baby'
+      path: '/baby'
+      fullPath: '/baby'
+      preLoaderRoute: typeof BabyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/engagement': {
+      id: '/engagement'
+      path: '/engagement'
+      fullPath: '/engagement'
+      preLoaderRoute: typeof EngagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kalupidithal': {
+      id: '/kalupidithal'
+      path: '/kalupidithal'
+      fullPath: '/kalupidithal'
+      preLoaderRoute: typeof KalupidithalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/memories': {
+      id: '/memories'
+      path: '/memories'
+      fullPath: '/memories'
+      preLoaderRoute: typeof MemoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reception': {
+      id: '/reception'
+      path: '/reception'
+      fullPath: '/reception'
+      preLoaderRoute: typeof ReceptionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/save-the-date': {
+      id: '/save-the-date'
+      path: '/save-the-date'
+      fullPath: '/save-the-date'
+      preLoaderRoute: typeof SaveTheDateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timeline': {
+      id: '/timeline'
+      path: '/timeline'
+      fullPath: '/timeline'
+      preLoaderRoute: typeof TimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/videos': {
+      id: '/videos'
+      path: '/videos'
+      fullPath: '/videos'
+      preLoaderRoute: typeof VideosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wedding': {
+      id: '/wedding'
+      path: '/wedding'
+      fullPath: '/wedding'
+      preLoaderRoute: typeof WeddingRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
